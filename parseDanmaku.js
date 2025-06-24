@@ -1,10 +1,11 @@
 // 用于解析B站的XML弹幕文件
 const fs = require("fs");
-const parser = require("xml2json");
+const { XMLParser } = require('fast-xml-parser');
+const parser = new XMLParser();
+
 function parseBilibiliXML(data) {
   let res = [];
-  let json = parser.toJson(data);
-
+  let json = parser.parse(data);
   let obj = JSON.parse(json);
 
   for (let text of obj.i.d) {
