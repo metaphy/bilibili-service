@@ -4,8 +4,11 @@ const { XMLParser } = require('fast-xml-parser');
 const parser = new XMLParser();
 
 function parseBilibiliXML(data) {
+  // console.log("开始解析B站XML弹幕文件");
+  // console.log(data);
   let res = [];
   let json = parser.parse(data);
+  console.log(json);
   let obj = JSON.parse(json);
 
   for (let text of obj.i.d) {

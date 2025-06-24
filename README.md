@@ -1,5 +1,10 @@
 # bilibili-service
 提供B站的弹幕和视频流服务，只需输入B站视频的bvid即可获取对应视频的视频流和弹幕池信息
+前置要求： 
+
+1. 安装ffmpeg
+2. 安装python，安装requests lib 
+3. chmod +x spider.py 
 
 ## 更新！！
 公网体验地址：http://47.101.212.31/getVideoData?bvid=(bvid)
@@ -8,7 +13,7 @@ __提供最高画质原版视频同时支持免费下载！！！__
 ## 使用方式
 1. 首先将项目clone到本地，运行```pnpm i```命令初始化。
 2. 找到index.js文件，运行```node index.js```
-3. 到B站上找到你喜欢视频的bvid，接着在浏览器访问本地服务```https://127.0.0.1?getVideoData=(bvid)```
+3. 到B站上找到你喜欢视频的bvid，接着在浏览器访问本地服务```http://127.0.0.1:8000/getVideoData?bvid=BV1Eu4y1Z73j```
 4. 接着你就会看到对应bvid的视频就已经完成下载并且在浏览器端播放了：
 __PS，确保你本地已经安装好了python和ffmpeg，具体安装方式可自行google__
 ### 这是原视频：

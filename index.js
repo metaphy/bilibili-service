@@ -38,16 +38,18 @@ app.get("/getVideoData", async (req, res) => {
     `https://api.bilibili.com/x/player/pagelist?bvid=${bvid}`
   );
   cvid = value.data.data[0].cid;
+  console.log("Response CVID:", cvid);
   // 2. 根据bvid,cvid请求avid
   let value2 = await instance.get(
     `https://api.bilibili.com/x/web-interface/view?cid=${cvid}&bvid=${bvid}`
   );
   avid = value2.data.data.aid;
+  console.log("Response AVID:", avid);
   // 3. 根据cvid请求弹幕池文件
-  let value3 = await instance.get(
-    `https://api.bilibili.com/x/v1/dm/list.so?oid=${cvid}`
-  );
-  danmaku = parseBilibiliXML(value3.data);
+  // let value3 = await instance.get(
+  //   `https://api.bilibili.com/x/v1/dm/list.so?oid=${cvid}`
+  // );
+  // danmaku = parseBilibiliXML(value3.data);
 
   // 4.请求视频流文件
   let value4 = await instance.get(
@@ -95,6 +97,7 @@ io.on("connection", (socket) => {
   });
 });
 
-http.listen(80, () => {
-  console.log("listening on *:80");
+http.listen(8000, () => {
+  console.log("Server is up. Input url such as:");
+  console.log("http://127.0.0.1:8000/getVideoData?bvid=BV1Eu4y1Z73j")
 });
