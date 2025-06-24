@@ -1,0 +1,4 @@
+/node_modules/
+/public/
+.vs_code/
+.DS_Store
