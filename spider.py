@@ -20,6 +20,13 @@ def generateFFMPEG(bvid):
     print(cmd)
     return cmd
 
+def rewriteMP3(bvid):
+    # 重写MP3文件, 使用车载Player播放时需要
+    cmd = f'ffmpeg -i "public/{bvid}.mp3" -ar 44100 -acodec libmp3lame -b:a 192k -ac 2 "public/{bvid}-44K.mp3" '
+    print(cmd)
+    subprocess.call(cmd, shell=True)
+
+
 # 获取视频和音频的二进制流数据
 def getMediaData(url, bvid):
     if not os.path.exists('./public'):
@@ -30,8 +37,10 @@ def getMediaData(url, bvid):
 
     videoResponse = requests.get(url.get("video"), headers=headers).content
     audioResponse = requests.get(url.get("audio"), headers=headers).content
-    saveFile(videoResponse,bvid + ".mp4")
-    saveFile(audioResponse,bvid + ".mp3")
+    saveFile(videoResponse, bvid + ".mp4")
+    saveFile(audioResponse, bvid + ".mp3")
+
+    rewriteMP3(bvid)
 
     subprocess.call(generateFFMPEG(bvid),shell=True)
 

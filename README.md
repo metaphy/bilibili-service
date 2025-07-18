@@ -64,3 +64,17 @@ https://www.bilibili.com/video/BV1Ud4y1V79P?t=0.7
 2. 获取视频cid: https://api.bilibili.com/x/web-interface/view?cid=${cvid}&bvid=${bvid}
 3. 获取对应视频的弹幕池文件： https://api.bilibili.com/x/v1/dm/list.so?oid=(cvid)
 4. 获取视频流文件（多种清晰度）：https://api.bilibili.com/x/player/playurl?fnval=80&avid=${avid}&cid=${cvid}
+
+
+## Run it
+1. node index.js 
+2. get the bvid of the video from bilibili 
+3. Browser:  http://127.0.0.1:8000/getVideoData?bvid=BV1Eu4y1Z73j
+4. The downloaded files saved to ./public
+
+
+http://127.0.0.1:8000/getVideoData?bvid=BV1SkMUz4EBa
+
+ffmpeg -i "输入文件.mp3" -ar 44100 -acodec libmp3lame -b:a 192k -ac 2 "输出文件.mp3"
+
+ 

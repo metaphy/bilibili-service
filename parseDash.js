@@ -13,3 +13,7 @@ module.exports = function parseDash(obj,bvid) {
     })
 
 }
+
+
+// http://127.0.0.1:8000/getVideoData?bvid=BV1xz421B7ku
+
