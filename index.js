@@ -28,7 +28,7 @@ app.get("/getVideoData", async (req, res) => {
   if (bvids.includes(bvid)) {
     return res.redirect(`./static/${bvid}_new.mp4`);
   }
-  console.log("Request  http://127.0.0.1:8000/getVideoData?bvid=", bvid); 
+  console.log("Request  http://127.0.0.1:8000/getVideoData?bvid=" + bvid); 
 
   let avid = null;
   let cvid = null;
