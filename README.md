@@ -73,10 +73,6 @@ https://www.bilibili.com/video/BV1Ud4y1V79P?t=0.7
 4. The downloaded files saved to ./public
 
 
-http://127.0.0.1:8000/getVideoData?bvid=BV1SkMUz4EBa
-
-ffmpeg -i "输入文件.mp3" -ar 44100 -acodec libmp3lame -b:a 192k -ac 2 "输出文件.mp3"
-
 ## 批量下载
 1. 准备下载歌单，文件名: ./download.csv 
 2. 启动web服务: node index.js
