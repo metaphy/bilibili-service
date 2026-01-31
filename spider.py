@@ -20,9 +20,24 @@ def generateFFMPEG(bvid):
     print(cmd)
     return cmd
 
+def get_file_name(bvid):
+    try: 
+        with open('download.csv', 'r') as f:
+            for line in f:
+                record_bvid, file_name = line.strip().split(',')
+                if record_bvid == bvid:
+                    return file_name
+    except FileNotFoundError:
+        return None
+    return None
+
 def rewriteMP3(bvid):
     # 重写MP3文件, 使用车载Player播放时需要
-    cmd = f'ffmpeg -i "public/{bvid}.mp3" -ar 44100 -acodec libmp3lame -b:a 192k -ac 2 "public/{bvid}-44K.mp3" '
+    file_name = get_file_name(bvid)
+    if not file_name:
+        file_name = bvid + '-44K'
+
+    cmd = f'ffmpeg -i "public/{bvid}.mp3" -ar 44100 -acodec libmp3lame -b:a 192k -ac 2 "public/{file_name}.mp3" '
     print(cmd)
     subprocess.call(cmd, shell=True)
 
